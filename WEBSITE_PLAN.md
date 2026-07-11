@@ -279,6 +279,8 @@ From code repo:
 - Experimental SAField image:
   `assets/safield_experimental_shape_demo_blender.png` for possible limitations
   context only, not as a dedicated demo section.
+- Public SAField text links to:
+  `https://github.com/lzhyu/PoseShield/tree/main/experimental/safield_demo`.
 - Additional generated examples can be produced later from scripts under:
   - `demos/demo_pose.py`
   - `demos/demo_motion.sh`
