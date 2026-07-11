@@ -112,7 +112,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Human pose and motion generators often produce plausible movement that still contains geometric self-collisions. PoseShield addresses this as a post-hoc collision-resolution problem: given an existing SMPL-H pose or motion, it finds a nearby collision-free result while preserving the original pose semantics, hand motion, and temporal dynamics.
+            Human pose and motion generators often produce plausible movement that still contains geometric self-collisions. PoseShield addresses this as a post-hoc collision-resolution problem: given an existing SMPL-H pose or motion, it finds a nearby collision-free result while preserving the original pose semantics and temporal dynamics.
           </p>
           <p>
             The core component is a neural collision field defined directly in SMPL-H pose space. The field is trained to separate self-intersecting and collision-free configurations and is regularized with an Eikonal-style objective, providing stable gradients near the collision boundary for constrained optimization.
@@ -143,7 +143,7 @@
   <div class="container pose-container">
     <h2 class="title is-3 has-text-centered">Pose Examples</h2>
     <p class="section-lead">
-      Each card is a local 3D before/after scene: <span class="color-yellow">yellow</span> marks precomputed contact vertices on the <span class="color-red">red</span> input, and <span class="color-green">green</span> shows the PoseShield result.
+      Each card is a local 3D before/after scene: <span class="color-yellow">yellow</span> marks precomputed contact vertices on the <span class="color-red">red</span> input, and <span class="color-green">green</span> shows the PoseShield result. Drag to rotate; scroll or pinch to zoom.
     </p>
     <div class="pose-grid home-pose-grid">
       <figure>
@@ -493,7 +493,7 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Resources</h2>
     <p class="section-lead">
-      Code, checkpoints, and released pose/motion assets are distributed separately from the static project page.
+      Code, checkpoints, and released data assets are available below.
     </p>
     <div class="resource-grid">
       <a class="resource-link" href="https://github.com/lzhyu/PoseShield">
