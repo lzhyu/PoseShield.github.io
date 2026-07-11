@@ -1,78 +1,96 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
-var INTERP_BASE = "./static/interpolation/stacked";
-var NUM_INTERP_FRAMES = 240;
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("model-viewer[poster]").forEach((viewer) => {
+    const shell = viewer.closest(".pose-viewer-shell");
+    const poster = viewer.getAttribute("poster");
+    if (!shell || !poster) {
+      return;
+    }
 
-var interp_images = [];
-function preloadInterpolationImages() {
-  for (var i = 0; i < NUM_INTERP_FRAMES; i++) {
-    var path = INTERP_BASE + '/' + String(i).padStart(6, '0') + '.jpg';
-    interp_images[i] = new Image();
-    interp_images[i].src = path;
-  }
-}
+    if (!shell.style.getPropertyValue("--viewer-fallback")) {
+      shell.style.setProperty("--viewer-fallback", `url("${poster.replace(/^\.\/static\//, "../")}")`);
+    }
+    viewer.addEventListener(
+      "load",
+      () => {
+        shell.classList.add("is-loaded");
+      },
+      { once: true },
+    );
+  });
 
-function setInterpolationImage(i) {
-  var image = interp_images[i];
-  image.ondragstart = function() { return false; };
-  image.oncontextmenu = function() { return false; };
-  $('#interpolation-image-wrapper').empty().append(image);
-}
+  document.querySelectorAll(".motion-grid figure").forEach((figure) => {
+    const video = figure.querySelector("[data-motion-video]");
+    const slider = figure.querySelector("[data-motion-slider]");
+    const toggle = figure.querySelector("[data-motion-toggle]");
+    if (!video || !slider) {
+      return;
+    }
 
+    let scrubbing = false;
 
-$(document).ready(function() {
-    // Check for click events on the navbar burger icon
-    $(".navbar-burger").click(function() {
-      // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-      $(".navbar-burger").toggleClass("is-active");
-      $(".navbar-menu").toggleClass("is-active");
+    const setToggleLabel = () => {
+      if (!toggle) {
+        return;
+      }
+      const isEnded = Number.isFinite(video.duration) && video.duration > 0 && video.currentTime >= video.duration;
+      toggle.textContent = isEnded ? "Replay" : video.paused ? "Play" : "Pause";
+      toggle.setAttribute("aria-label", `${toggle.textContent} motion example`);
+    };
 
+    const syncSlider = () => {
+      if (scrubbing || !Number.isFinite(video.duration) || video.duration <= 0) {
+        return;
+      }
+      slider.value = Math.round((video.currentTime / video.duration) * Number(slider.max));
+    };
+
+    const seekFromSlider = () => {
+      if (!Number.isFinite(video.duration) || video.duration <= 0) {
+        return;
+      }
+      video.currentTime = (Number(slider.value) / Number(slider.max)) * video.duration;
+      setToggleLabel();
+    };
+
+    const togglePlayback = () => {
+      if (Number.isFinite(video.duration) && video.duration > 0 && video.currentTime >= video.duration) {
+        video.currentTime = 0;
+      }
+      if (video.paused) {
+        video.play().catch(() => {
+          video.controls = true;
+        });
+      } else {
+        video.pause();
+      }
+    };
+
+    slider.addEventListener("pointerdown", () => {
+      scrubbing = true;
+      video.pause();
     });
-
-    var options = {
-			slidesToScroll: 1,
-			slidesToShow: 3,
-			loop: true,
-			infinite: true,
-			autoplay: false,
-			autoplaySpeed: 3000,
-    }
-
-		// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
-
-    // Loop on each carousel initialized
-    for(var i = 0; i < carousels.length; i++) {
-    	// Add listener to  event
-    	carousels[i].on('before:show', state => {
-    		console.log(state);
-    	});
-    }
-
-    // Access to bulmaCarousel instance of an element
-    var element = document.querySelector('#my-element');
-    if (element && element.bulmaCarousel) {
-    	// bulmaCarousel instance is available as element.bulmaCarousel
-    	element.bulmaCarousel.on('before-show', function(state) {
-    		console.log(state);
-    	});
-    }
-
-    /*var player = document.getElementById('interpolation-video');
-    player.addEventListener('loadedmetadata', function() {
-      $('#interpolation-slider').on('input', function(event) {
-        console.log(this.value, player.duration);
-        player.currentTime = player.duration / 100 * this.value;
-      })
-    }, false);*/
-    preloadInterpolationImages();
-
-    $('#interpolation-slider').on('input', function(event) {
-      setInterpolationImage(this.value);
+    slider.addEventListener("pointerup", () => {
+      seekFromSlider();
+      scrubbing = false;
     });
-    setInterpolationImage(0);
-    $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
-
-    bulmaSlider.attach();
-
-})
+    slider.addEventListener("input", () => {
+      video.pause();
+      seekFromSlider();
+    });
+    if (toggle) {
+      toggle.addEventListener("click", togglePlayback);
+    }
+    video.addEventListener("click", togglePlayback);
+    video.addEventListener("timeupdate", syncSlider);
+    video.addEventListener("loadedmetadata", () => {
+      video.currentTime = 0;
+      syncSlider();
+      setToggleLabel();
+    });
+    video.addEventListener("play", setToggleLabel);
+    video.addEventListener("pause", setToggleLabel);
+    video.addEventListener("ended", setToggleLabel);
+  });
+});

@@ -1,0 +1,54 @@
+{
+  "split": "test",
+  "num_per_class": 3,
+  "records": [
+    {
+      "kind": "collision",
+      "label": -1,
+      "data_kind": "augmented_data",
+      "filename": "005377.npz",
+      "frame": 44,
+      "asset_stem": "hwc_collision_01"
+    },
+    {
+      "kind": "collision",
+      "label": -1,
+      "data_kind": "augmented_data",
+      "filename": "006293.npz",
+      "frame": 66,
+      "asset_stem": "hwc_collision_02"
+    },
+    {
+      "kind": "collision",
+      "label": -1,
+      "data_kind": "augmented_data",
+      "filename": "006319.npz",
+      "frame": 47,
+      "asset_stem": "hwc_collision_03"
+    },
+    {
+      "kind": "free",
+      "label": 1,
+      "data_kind": "gt_data",
+      "filename": "006293.npz",
+      "frame": 33,
+      "asset_stem": "hwc_free_01"
+    },
+    {
+      "kind": "free",
+      "label": 1,
+      "data_kind": "gt_data",
+      "filename": "006319.npz",
+      "frame": 46,
+      "asset_stem": "hwc_free_02"
+    },
+    {
+      "kind": "free",
+      "label": 1,
+      "data_kind": "gt_data",
+      "filename": "005885.npz",
+      "frame": 55,
+      "asset_stem": "hwc_free_03"
+    }
+  ]
+}

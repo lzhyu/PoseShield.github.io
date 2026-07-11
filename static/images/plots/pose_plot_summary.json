@@ -1,0 +1,14 @@
+{
+  "num_samples": 500,
+  "solver_success_rate": 0.454,
+  "constraint_satisfied_rate": 0.274,
+  "exact_collision_free_rate": 0.834,
+  "paper_hwc_scc": 0.958,
+  "paper_hwc_pdr": 0.982,
+  "paper_hwc_mvd": 0.059,
+  "paper_best_baseline_scc": 0.446,
+  "paper_best_baseline_pdr": 0.832,
+  "paper_best_baseline_mvd": 0.106,
+  "mean_final_cost": 0.023494724,
+  "mean_penetration_depth": 0.07043137399999999
+}

@@ -2,172 +2,87 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="description" content="PoseShield: Neural Collision Fields for Human Self-Collision Resolution.">
+  <meta name="keywords" content="PoseShield, human motion, self-collision, SMPL-H, collision resolution">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nerfies: Deformable Neural Radiance Fields</title>
+  <title>PoseShield: Neural Collision Fields for Human Self-Collision Resolution</title>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
-
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css?v=color-hwc20-1">
   <link rel="icon" href="./static/images/favicon.svg">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script type="module" src="./static/js/model-viewer.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
 </head>
 <body>
 
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More Research
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</nav>
-
-
-<section class="hero">
+<section class="hero publication-header">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Nerfies: Deformable Neural Radiance Fields</h1>
+          <h1 class="title is-1 publication-title">PoseShield: Neural Collision Fields for Human Self-Collision Resolution</h1>
           <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://keunhong.com">Keunhong Park</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
-            <span class="author-block">
-              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
-            </span>
+            <span class="author-block">Zhengyuan Li<sup>1</sup>,</span>
+            <span class="author-block">Zeyun Deng<sup>1</sup>,</span>
+            <span class="author-block">Yifan Shen<sup>3</sup>,</span>
+            <span class="author-block">Liangyan Gui<sup>3</sup>,</span>
+            <span class="author-block">Miaolan Xie<sup>1</sup>,</span>
+            <span class="author-block">Joseph Campbell<sup>1</sup>,</span>
+            <span class="author-block">Xifeng Gao<sup>2</sup>,</span>
+            <span class="author-block">Kui Wu<sup>2</sup>,</span>
+            <span class="author-block">Zherong Pan<sup>2</sup>,</span>
+            <span class="author-block">Aniket Bera<sup>1</sup></span>
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>University of Washington,</span>
-            <span class="author-block"><sup>2</sup>Google Research</span>
+            <span class="author-block"><sup>1</sup>Purdue University</span>
+            <span class="author-block"><sup>2</sup>LightSpeed Studios</span>
+            <span class="author-block"><sup>3</sup>University of Illinois Urbana-Champaign</span>
           </div>
+
+          <div class="logo-row" aria-label="Affiliations">
+            <img src="./static/images/logos/purdue_logo.svg" alt="Purdue University">
+            <img src="./static/images/logos/lightspeed_logo.png" alt="LightSpeed Studios">
+            <img src="./static/images/logos/uiuc_logo.png" alt="University of Illinois Urbana-Champaign">
+          </div>
+
+          <div class="is-size-5 publication-venue">ECCV 2026</div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
-              <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
+                <a href="https://arxiv.org/pdf/2606.29686" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
                   <span>Paper</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
+                <a href="https://arxiv.org/abs/2606.29686" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
                   <span>arXiv</span>
                 </a>
               </span>
-              <!-- Video Link. -->
               <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
+                <a href="https://github.com/lzhyu/PoseShield" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
                 </a>
               </span>
-              <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/google/nerfies"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
+                <a href="https://huggingface.co/ZYYY99/PoseShield" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-database"></i></span>
+                  <span>Models</span>
+                </a>
               </span>
-              <!-- Dataset Link. -->
-              <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a>
             </div>
-
           </div>
         </div>
       </div>
@@ -176,312 +91,451 @@
 </section>
 
 <section class="hero teaser">
-  <div class="container is-max-desktop">
+  <div class="container motion-container">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
+      <img class="teaser-media" src="./static/videos/poseshield_teaser.gif" alt="PoseShield collision resolution teaser">
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
+        PoseShield repairs self-colliding SMPL-H poses and motions as a post-hoc optimization step.
       </h2>
-    </div>
-  </div>
-</section>
-
-
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-toby">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toby2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
+      <div class="color-legend" aria-label="Color legend">
+        <span><i class="legend-dot legend-red"></i> <span class="color-red">self-collision present</span></span>
+        <span><i class="legend-dot legend-green"></i> <span class="color-green">collision-free after PoseShield</span></span>
       </div>
     </div>
   </div>
 </section>
 
-
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
+            Human pose and motion generators often produce plausible movement that still contains geometric self-collisions. PoseShield addresses this as a post-hoc collision-resolution problem: given an existing SMPL-H pose or motion, it finds a nearby collision-free result while preserving the original pose semantics, hand motion, and temporal dynamics.
           </p>
           <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
-          </p>
-          <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
+            The core component is a neural collision field defined directly in SMPL-H pose space. The field is trained to separate self-intersecting and collision-free configurations and is regularized with an Eikonal-style objective, providing stable gradients near the collision boundary for constrained optimization.
           </p>
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
-
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    <!--/ Paper video. -->
   </div>
 </section>
 
+<section class="section method-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Method Overview</h2>
+        <img class="pipeline-figure" src="./static/images/figures/pipeline.png" alt="PoseShield pipeline">
+        <div class="content has-text-justified">
+          <p>
+            PoseShield models self-collision as a neural field directly in SMPL-H pose space: positive scores indicate collision-free poses, while negative scores indicate self-collisions. The learned field provides differentiable gradients that project colliding poses and motion latents back toward the collision-free region while preserving the original pose or action.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section examples-section">
+  <div class="container pose-container">
+    <h2 class="title is-3 has-text-centered">Pose Examples</h2>
+    <p class="section-lead">
+      Each card is a local 3D before/after scene: <span class="color-yellow">yellow</span> marks precomputed contact vertices on the <span class="color-red">red</span> input, and <span class="color-green">green</span> shows the PoseShield result.
+    </p>
+    <div class="pose-grid home-pose-grid">
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/pose_candidates/pose_412_before_after.jpg?v=contactfix3')">
+          <model-viewer
+            class="pose-example-viewer"
+            src="./static/models/pose_candidates/pose_412_before_after.glb?v=contactfix3"
+            poster="./static/images/viewer_fallbacks/pose_candidates/pose_412_before_after.jpg?v=contactfix3"
+            alt="3D before and after pose example showing red colliding input and green PoseShield result"
+            camera-controls
+            loading="eager"
+            reveal="auto"
+            tabindex="0"
+            touch-action="pan-y"
+            interaction-prompt="none"
+            shadow-intensity="0.45"
+            exposure="0.95"
+            camera-orbit="0deg 76deg 3.8m"
+            field-of-view="28deg">
+          </model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/pose_candidates/pose_335_before_after.jpg?v=contactfix3')">
+          <model-viewer
+            class="pose-example-viewer"
+            src="./static/models/pose_candidates/pose_335_before_after.glb?v=contactfix3"
+            poster="./static/images/viewer_fallbacks/pose_candidates/pose_335_before_after.jpg?v=contactfix3"
+            alt="3D before and after pose example showing red colliding input and green PoseShield result"
+            camera-controls
+            loading="eager"
+            reveal="auto"
+            tabindex="0"
+            touch-action="pan-y"
+            interaction-prompt="none"
+            shadow-intensity="0.45"
+            exposure="0.95"
+            camera-orbit="0deg 76deg 3.8m"
+            field-of-view="28deg">
+          </model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/pose_candidates/pose_337_before_after.jpg?v=contactfix3')">
+          <model-viewer
+            class="pose-example-viewer"
+            src="./static/models/pose_candidates/pose_337_before_after.glb?v=contactfix3"
+            poster="./static/images/viewer_fallbacks/pose_candidates/pose_337_before_after.jpg?v=contactfix3"
+            alt="3D before and after pose example showing red colliding input and green PoseShield result"
+            camera-controls
+            loading="eager"
+            reveal="auto"
+            tabindex="0"
+            touch-action="pan-y"
+            interaction-prompt="none"
+            shadow-intensity="0.45"
+            exposure="0.95"
+            camera-orbit="0deg 76deg 3.8m"
+            field-of-view="28deg">
+          </model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/pose_candidates/pose_055_before_after.jpg?v=contactfix3')">
+          <model-viewer
+            class="pose-example-viewer"
+            src="./static/models/pose_candidates/pose_055_before_after.glb?v=contactfix3"
+            poster="./static/images/viewer_fallbacks/pose_candidates/pose_055_before_after.jpg?v=contactfix3"
+            alt="3D before and after pose example showing red colliding input and green PoseShield result"
+            camera-controls
+            loading="eager"
+            reveal="auto"
+            tabindex="0"
+            touch-action="pan-y"
+            interaction-prompt="none"
+            shadow-intensity="0.45"
+            exposure="0.95"
+            camera-orbit="0deg 76deg 3.8m"
+            field-of-view="28deg">
+          </model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/pose_candidates/pose_368_before_after.jpg?v=contactfix3')">
+          <model-viewer
+            class="pose-example-viewer"
+            src="./static/models/pose_candidates/pose_368_before_after.glb?v=contactfix3"
+            poster="./static/images/viewer_fallbacks/pose_candidates/pose_368_before_after.jpg?v=contactfix3"
+            alt="3D before and after pose example showing red colliding input and green PoseShield result"
+            camera-controls
+            loading="eager"
+            reveal="auto"
+            tabindex="0"
+            touch-action="pan-y"
+            interaction-prompt="none"
+            shadow-intensity="0.45"
+            exposure="0.95"
+            camera-orbit="0deg 76deg 3.8m"
+            field-of-view="28deg">
+          </model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/pose_candidates/pose_021_before_after.jpg?v=contactfix3')">
+          <model-viewer
+            class="pose-example-viewer"
+            src="./static/models/pose_candidates/pose_021_before_after.glb?v=contactfix3"
+            poster="./static/images/viewer_fallbacks/pose_candidates/pose_021_before_after.jpg?v=contactfix3"
+            alt="3D before and after pose example showing red colliding input and green PoseShield result"
+            camera-controls
+            loading="eager"
+            reveal="auto"
+            tabindex="0"
+            touch-action="pan-y"
+            interaction-prompt="none"
+            shadow-intensity="0.45"
+            exposure="0.95"
+            camera-orbit="0deg 76deg 3.8m"
+            field-of-view="28deg">
+          </model-viewer>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section motion-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Human Motion Examples</h2>
+    <p class="section-lead">
+      Selected motion examples show <span class="color-red">red</span> colliding inputs with <span class="color-yellow">yellow</span> contact regions and <span class="color-green">green</span> PoseShield outputs. The emphasis is on removing self-collision while keeping the visible action and timing close to the original motion.
+    </p>
+    <div class="motion-grid">
+      <figure>
+        <video class="motion-video" data-motion-video src="./static/videos/motionfix_005348_135_blender.webm?v=topo40-final2" muted playsinline preload="metadata" aria-label="Blender-rendered leaning motion example"></video>
+        <div class="motion-controls">
+          <button class="motion-toggle" data-motion-toggle type="button" aria-label="Play leaning motion example">Play</button>
+          <input class="motion-timeline" data-motion-slider type="range" min="0" max="1000" value="0" step="1" aria-label="Scrub leaning motion example">
+        </div>
+      </figure>
+      <figure>
+        <video class="motion-video" data-motion-video src="./static/videos/motionfix_005334_135_blender.webm?v=topo40-m11-max5m1" muted playsinline preload="metadata" aria-label="Blender-rendered gesture motion candidate"></video>
+        <div class="motion-controls">
+          <button class="motion-toggle" data-motion-toggle type="button" aria-label="Play gesture motion candidate">Play</button>
+          <input class="motion-timeline" data-motion-slider type="range" min="0" max="1000" value="0" step="1" aria-label="Scrub gesture motion candidate">
+        </div>
+      </figure>
+      <figure>
+        <video class="motion-video" data-motion-video src="./static/videos/motionfix_005424_135_blender.webm?v=topo40-final2" muted playsinline preload="metadata" aria-label="Blender-rendered crouched motion candidate"></video>
+        <div class="motion-controls">
+          <button class="motion-toggle" data-motion-toggle type="button" aria-label="Play crouched motion candidate">Play</button>
+          <input class="motion-timeline" data-motion-slider type="range" min="0" max="1000" value="0" step="1" aria-label="Scrub crouched motion candidate">
+        </div>
+      </figure>
+      <figure>
+        <video class="motion-video" data-motion-video src="./static/videos/motionfix_005399_135_blender.webm?v=topo40-final2" muted playsinline preload="metadata" aria-label="Blender-rendered arm and torso motion candidate"></video>
+        <div class="motion-controls">
+          <button class="motion-toggle" data-motion-toggle type="button" aria-label="Play arm and torso motion candidate">Play</button>
+          <input class="motion-timeline" data-motion-slider type="range" min="0" max="1000" value="0" step="1" aria-label="Scrub arm and torso motion candidate">
+        </div>
+      </figure>
+      <figure>
+        <video class="motion-video" data-motion-video src="./static/videos/motionfix_004422_135_blender.webm?v=topo40-final2" muted playsinline preload="metadata" aria-label="Blender-rendered whole-body motion candidate"></video>
+        <div class="motion-controls">
+          <button class="motion-toggle" data-motion-toggle type="button" aria-label="Play whole-body motion candidate">Play</button>
+          <input class="motion-timeline" data-motion-slider type="range" min="0" max="1000" value="0" step="1" aria-label="Scrub whole-body motion candidate">
+        </div>
+      </figure>
+      <figure>
+        <video class="motion-video" data-motion-video src="./static/videos/motionfix_005783_135_blender.webm?v=topo40-final2" muted playsinline preload="metadata" aria-label="Blender-rendered dynamic contact motion candidate"></video>
+        <div class="motion-controls">
+          <button class="motion-toggle" data-motion-toggle type="button" aria-label="Play dynamic contact motion candidate">Play</button>
+          <input class="motion-timeline" data-motion-slider type="range" min="0" max="1000" value="0" step="1" aria-label="Scrub dynamic contact motion candidate">
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section failure-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Failure Cases</h2>
+    <p class="section-lead">
+      PoseShield can remove the geometric self-collision while changing the apparent motion semantics more than desired. These examples show collision-clean outputs where the original action becomes less faithful.
+    </p>
+    <div class="motion-grid">
+      <figure>
+        <video class="motion-video" data-motion-video src="./static/videos/motionfix_005859_135_blender.webm" muted playsinline preload="metadata" aria-label="Failure case where collision is resolved but motion semantics drift"></video>
+        <div class="motion-controls">
+          <button class="motion-toggle" data-motion-toggle type="button" aria-label="Play failure case">Play</button>
+          <input class="motion-timeline" data-motion-slider type="range" min="0" max="1000" value="0" step="1" aria-label="Scrub failure case">
+        </div>
+        <figcaption>Collision is removed, but the body configuration drifts enough that the original action is less clear.</figcaption>
+      </figure>
+      <figure>
+        <video class="motion-video" data-motion-video src="./static/videos/motionfix_006076_135_blender.webm" muted playsinline preload="metadata" aria-label="Failure case where collision is resolved but action semantics change"></video>
+        <div class="motion-controls">
+          <button class="motion-toggle" data-motion-toggle type="button" aria-label="Play failure case">Play</button>
+          <input class="motion-timeline" data-motion-slider type="range" min="0" max="1000" value="0" step="1" aria-label="Scrub failure case">
+        </div>
+        <figcaption>The output is collision-clean, but the body lean and gesture change noticeably.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section hwc-section">
+  <div class="container pose-container">
+    <h2 class="title is-3 has-text-centered">Humans with Collisions Data Examples</h2>
+    <p class="section-lead">
+      HwC contains 931k SMPL-H poses: 531k self-colliding examples (57%) and 399k collision-free examples (43%), split 9:1 for training and testing. <span class="color-red">Red</span> viewers show self-colliding samples with <span class="color-yellow">yellow</span> contact vertices; <span class="color-green">green</span> viewers show collision-free samples. Part of the source data comes from <a href="https://motionfix.is.tue.mpg.de/">MotionFix</a>.
+    </p>
+    <div class="pose-grid">
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_collision_01.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_collision_01.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_collision_01.jpg?v=contactfix3" alt="HC01 HwC self-colliding sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_collision_02.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_collision_02.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_collision_02.jpg?v=contactfix3" alt="HC02 HwC self-colliding sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_collision_03.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_collision_03.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_collision_03.jpg?v=contactfix3" alt="HC03 HwC self-colliding sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_collision_04.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_collision_04.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_collision_04.jpg?v=contactfix3" alt="HC04 HwC self-colliding sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_collision_05.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_collision_05.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_collision_05.jpg?v=contactfix3" alt="HC05 HwC self-colliding sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_collision_06.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_collision_06.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_collision_06.jpg?v=contactfix3" alt="HC06 HwC self-colliding sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_collision_07.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_collision_07.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_collision_07.jpg?v=contactfix3" alt="HC07 HwC self-colliding sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_collision_08.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_collision_08.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_collision_08.jpg?v=contactfix3" alt="HC08 HwC self-colliding sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_collision_09.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_collision_09.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_collision_09.jpg?v=contactfix3" alt="HC09 HwC self-colliding sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_collision_10.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_collision_10.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_collision_10.jpg?v=contactfix3" alt="HC10 HwC self-colliding sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_free_01.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_free_01.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_free_01.jpg?v=contactfix3" alt="HF01 HwC collision-free sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_free_02.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_free_02.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_free_02.jpg?v=contactfix3" alt="HF02 HwC collision-free sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_free_03.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_free_03.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_free_03.jpg?v=contactfix3" alt="HF03 HwC collision-free sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_free_04.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_free_04.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_free_04.jpg?v=contactfix3" alt="HF04 HwC collision-free sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_free_05.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_free_05.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_free_05.jpg?v=contactfix3" alt="HF05 HwC collision-free sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_free_06.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_free_06.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_free_06.jpg?v=contactfix3" alt="HF06 HwC collision-free sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_free_07.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_free_07.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_free_07.jpg?v=contactfix3" alt="HF07 HwC collision-free sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_free_08.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_free_08.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_free_08.jpg?v=contactfix3" alt="HF08 HwC collision-free sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_free_09.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_free_09.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_free_09.jpg?v=contactfix3" alt="HF09 HwC collision-free sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+      <figure>
+        <div class="pose-viewer-shell" style="--viewer-fallback: url('../images/viewer_fallbacks/hwc_free_10.jpg?v=contactfix3')">
+          <model-viewer class="pose-example-viewer" src="./static/models/hwc_free_10.glb?v=contactfix3" poster="./static/images/viewer_fallbacks/hwc_free_10.jpg?v=contactfix3" alt="HF10 HwC collision-free sample" camera-controls reveal="auto" loading="lazy" tabindex="0" touch-action="pan-y" interaction-prompt="none" shadow-intensity="0.45" exposure="0.95" camera-orbit="0deg 76deg 4.2m" field-of-view="28deg"></model-viewer>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section quantitative-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Pose-Level Evaluation</h2>
+    <p class="section-lead">
+      The pose benchmark asks whether a colliding input becomes collision-free and how much penetration is reduced. PoseShield improves both resolution rates, showing that the learned field works as a practical post-hoc collision constraint rather than only a detector.
+    </p>
+    <div class="quant-plot-single">
+      <img src="./static/images/plots/pose_resolution_rates.png?v=colors3" alt="Pose-level resolution rates">
+    </div>
+  </div>
+</section>
 
 <section class="section">
   <div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <!--/ Matting. -->
-
-    <!-- Animation. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
+        <h2 class="title is-3 has-text-centered">Limitations</h2>
         <div class="content has-text-justified">
           <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
-            </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
-          </div>
-        </div>
-        <br/>
-        <!--/ Interpolating. -->
-
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <!--/ Re-rendering. -->
-
-      </div>
-    </div>
-    <!--/ Animation. -->
-
-
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
+            PoseShield currently follows the paper setting and assumes the neutral SMPL-H body model with no subject-specific shape parameters. Applying the method to other SMPL body shapes, character-specific SMPL humans, Momentum Human Rig, or other human parametric models may require building a collision dataset for the target body model and retraining the collision field.
           </p>
           <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+            We also explored a preliminary shape-aware SAField variant. These experiments suggest that adding shape conditioning is feasible, rather than a fundamental limitation, but it is treated as an experimental extension rather than the primary PoseShield release path.
           </p>
         </div>
       </div>
     </div>
-    <!--/ Concurrent Work. -->
-
   </div>
 </section>
 
+<section class="section resources-section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Resources</h2>
+    <p class="section-lead">
+      Code, checkpoints, and released pose/motion assets are distributed separately from the static project page.
+    </p>
+    <div class="resource-grid">
+      <a class="resource-link" href="https://github.com/lzhyu/PoseShield">
+        <span class="resource-title">Code</span>
+        <span class="resource-text">PoseShield implementation, demos, and evaluation scripts.</span>
+      </a>
+      <a class="resource-link" href="https://huggingface.co/ZYYY99/PoseShield">
+        <span class="resource-title">Models</span>
+        <span class="resource-text">Released PoseShield checkpoints and model assets.</span>
+      </a>
+      <a class="resource-link" href="https://drive.google.com/drive/folders/1gLdFy4OTfYaKeaZ3olqShyh3kF2m5ogf?usp=sharing">
+        <span class="resource-title">Data Assets</span>
+        <span class="resource-text">HwC pose data, motion-100 samples, and release packages.</span>
+      </a>
+      <a class="resource-link" href="https://github.com/lzhyu/PoseShield.github.io">
+        <span class="resource-title">Website</span>
+        <span class="resource-text">Static GitHub Pages source for this project page.</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+<pre><code>@article{li2026poseshield,
+  title={PoseShield: Neural Collision Fields for Human Self-Collision Resolution},
+  author={Li, Zhengyuan and Deng, Zeyun and Shen, Yifan and Gui, Liangyan and Xie, Miaolan and Campbell, Joseph and Gao, Xifeng and Wu, Kui and Pan, Zherong and Bera, Aniket},
+  journal={arXiv preprint arXiv:2606.29686},
+  year={2026}
 }</code></pre>
   </div>
 </section>
 
-
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
-          </p>
-        </div>
-      </div>
+      <p>
+        This website is adapted from the <a href="https://nerfies.github.io/">Nerfies</a> project page template.
+      </p>
     </div>
   </div>
 </footer>
